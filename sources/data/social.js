@@ -1,10 +1,7 @@
 export default [
-    { name: 'X', url: 'https://x.com/bruno_simon', align: 'right' },
-    { name: 'Bluesky', url: 'https://bsky.app/profile/bruno-simon.bsky.social', align: 'right' },
-    { name: 'Youtube', url: 'https://www.youtube.com/@BrunoSimon', align: 'right' },
-    { name: 'Mail', url: 'mailto:simon.bruno.77@gmail.com', align: 'right' },
-    { name: 'Twitch', url: 'https://www.twitch.tv/bruno_simon_dev', align: 'right' },
-    { name: 'GitHub', url: 'https://github.com/brunosimon', align: 'right' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/simonbruno77/', align: 'left' },
-    { name: 'Discord', modal: 'discord', align: 'left' },
+    { name: 'Instagram', url: 'https://www.instagram.com/kauan_kelvin45', align: 'right', slot: 0 },
+    { name: 'E-mail', url: 'mailto:kelvinkauan722@gmail.com', align: 'right', slot: 3 },
+    { name: 'GitHub', url: 'https://github.com/kauankelvin7', align: 'right', slot: 5 },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/kauan-kelvin/', align: 'left', slot: 6 },
+    { name: 'Portfólio', url: 'https://kauankelvindev.vercel.app', align: 'left', slot: 7 },
 ]

@@ -3,236 +3,42 @@ import projectsData from './projects.js'
 
 export default
 [
-    [
-        'landingLeave',
-        'I’m going on an adventure!',
-        'Get out of the landing area.',
-        1
-    ],
-    [
-        'areas',
-        'Traveler',
-        'Vist every area.',
-        13,
-        true // Unique
-    ],
-    [
-        'projects',
-        'But can you fix the wifi?',
-        'Check every project in the <strong>projects</strong> area.',
-        projectsData.length,
-        true // Unique
-    ],
-    [
-        'lab',
-        'I\'m a bit of a scientist myself',
-        'Check every project in the <strong>lab</strong> area.',
-        labData.length,
-        true // Unique
-    ],
-    [
-        'cookie',
-        'Wake & bake',
-        'Accept <strong>1</strong> cookies.',
-        1
-    ],
-    [
-        'cookie',
-        'Making some dough',
-        'Accept <strong>10</strong> cookies.',
-        10
-    ],
-    [
-        'cookie',
-        'So baked right now',
-        'Accept <strong>100</strong> cookies.',
-        100
-    ],
-    [
-        'cookie',
-        'Cookie Clicker',
-        'Accept <strong>1000</strong> cookies.',
-        1000
-    ],
-    [
-        'whisper',
-        'It\'s About Sending A Message',
-        'Post a whisper.',
-        1
-    ],
-    [
-        'sea',
-        'Under the sea',
-        'Go make friend with the fishes.',
-        1
-    ],
-    [
-        'upsideDown',
-        'Turtle',
-        'Get upside down.',
-        1
-    ],
-    [
-        'frontFlip',
-        'Teeth first',
-        'Do a front flip and land on your 4 wheels.',
-        1
-    ],
-    [
-        'backFlip',
-        'Flip of faith',
-        'Do a back flip and land on your 4 wheels.',
-        1
-    ],
-    [
-        'suspensions',
-        'Lowrider',
-        'Use the vehicle suspensions.',
-        4
-    ],
-    [
-        'honk',
-        'Honk',
-        'Honk me like one of your french driver.',
-        10
-    ],
-    [
-        'explosiveCrates',
-        'Great Explosion Murder God Dynamight',
-        'Blow up every explosive crate.',
-        20,
-        true // Unique
-    ],
-    [
-        'goHigh',
-        'Limit the sky',
-        'Reach <strong>15 meters</strong> high.',
-        15
-    ],
-    [
-        'strike',
-        'F*** it, dude. Let\'s go bowling',
-        'Accomplished a strike.',
-        1
-    ],
-    [
-        'toiletDown',
-        'Do not disturb',
-        'Knock down the latrine.',
-        1
-    ],
-    [
-        'circuitFinish',
-        'Participation medal',
-        'Finish a race.',
-        1
-    ],
-    [
-        'circuitFinishFast',
-        'KA-CHOW!',
-        'Finish a race in less than <strong>30s</strong>.',
-        1
-    ],
-    [
-        'circuitLeaderboard',
-        'Early Bird gets the Worm',
-        'Make it to the leaderboard.',
-        1
-    ],
-    [
-        'fullDay',
-        'Don’t you have work to do?',
-        'Spend a full day cycle here in one go.',
-        1
-    ],
-    [
-        'distanceDriven',
-        'Baby step',
-        'Drive 1km.',
-        1
-    ],
-    [
-        'distanceDriven',
-        'Are we there yet?',
-        'Drive 10km.',
-        10
-    ],
-    [
-        'distanceDriven',
-        'Honey, I’m home!',
-        'Drive 100km.',
-        100
-    ],
-    [
-        'sacrifice',
-        'One for the god of Chaos',
-        'Sacrifice yourself into the altar.',
-        1
-    ],
-    [
-        'cataclysm',
-        'Witness me!',
-        'Witness a cataclysm',
-        1
-    ],
-    [
-        'weatherSnow',
-        'Do you want to build a snowman?',
-        'Witness snowy weather.',
-        1
-    ],
-    [
-        'weatherRain',
-        'I’m singing in the rain',
-        'Witness a rainy weather.',
-        1
-    ],
-    [
-        'lightning',
-        '1.21 Gigawatts!',
-        'Get hit by a lightning.',
-        1
-    ],
-    [
-        'waterfall',
-        'Gamer instinct',
-        'What did you expect? A treasure?',
-        1
-    ],
-    [
-        'fan',
-        'You’re my only fan',
-        'Spawn a fan.',
-        1
-    ],
-    [
-        'reset',
-        'Clean your room',
-        'Put back everything as it was.',
-        1
-    ],
-    [
-        'statueDown',
-        'Revolution!',
-        'Tear that statue down.',
-        1
-    ],
-    [
-        'konami',
-        'Up up down down…',
-        'You know the rest.',
-        1
-    ],
-    [
-        'debug',
-        'It\'s not a bug, it\'s a feature',
-        'Access the debug UI.',
-        1
-    ],
-    [
-        'hacker',
-        'Hacker',
-        'This one can’t be achieved.',
-        1
-    ],
+    [ 'landingLeave', 'A aventura começou!', 'Saia da área inicial.', 1 ],
+    [ 'areas', 'Viajante', 'Visite todas as áreas.', 13, true ],
+    [ 'projects', 'Mas você também conserta o Wi-Fi?', 'Veja todos os trabalhos na área de <strong>projetos</strong>.', projectsData.length, true ],
+    [ 'lab', 'Curioso de laboratório', 'Veja todos os trabalhos no <strong>laboratório</strong>.', labData.length, true ],
+    [ 'cookie', 'Primeiro cookie', 'Aceite <strong>1</strong> cookie.', 1 ],
+    [ 'cookie', 'Preparando a massa', 'Aceite <strong>10</strong> cookies.', 10 ],
+    [ 'cookie', 'Forno ligado', 'Aceite <strong>100</strong> cookies.', 100 ],
+    [ 'cookie', 'Cookie Clicker', 'Aceite <strong>1000</strong> cookies.', 1000 ],
+    [ 'whisper', 'Só para deixar um recado', 'Publique um sussurro.', 1 ],
+    [ 'sea', 'No fundo do mar', 'Faça amizade com os peixes.', 1 ],
+    [ 'upsideDown', 'Tartaruga', 'Fique de cabeça para baixo.', 1 ],
+    [ 'frontFlip', 'Dentes primeiro', 'Dê um mortal para frente e caia sobre as quatro rodas.', 1 ],
+    [ 'backFlip', 'Salto de fé', 'Dê um mortal para trás e caia sobre as quatro rodas.', 1 ],
+    [ 'suspensions', 'Lowrider', 'Use a suspensão do veículo.', 4 ],
+    [ 'honk', 'Buzina', 'Buzine dez vezes.', 10 ],
+    [ 'explosiveCrates', 'Especialista em explosões', 'Exploda todas as caixas explosivas.', 20, true ],
+    [ 'goHigh', 'O céu é o limite', 'Chegue a <strong>15 metros</strong> de altura.', 15 ],
+    [ 'strike', 'Strike!', 'Faça um strike.', 1 ],
+    [ 'toiletDown', 'Não perturbe', 'Derrube a latrina.', 1 ],
+    [ 'circuitFinish', 'Medalha de participação', 'Termine uma corrida.', 1 ],
+    [ 'circuitFinishFast', 'KA-CHOW!', 'Termine uma corrida em menos de <strong>30s</strong>.', 1 ],
+    [ 'circuitLeaderboard', 'Quem chega cedo', 'Entre no placar de líderes.', 1 ],
+    [ 'fullDay', 'Volta completa', 'Passe um ciclo completo de dia aqui.', 1 ],
+    [ 'distanceDriven', 'Primeiros passos', 'Dirija 1 km.', 1 ],
+    [ 'distanceDriven', 'Já chegamos?', 'Dirija 10 km.', 10 ],
+    [ 'distanceDriven', 'Cheguei em casa!', 'Dirija 100 km.', 100 ],
+    [ 'sacrifice', 'Uma para o deus do caos', 'Sacrifique-se no altar.', 1 ],
+    [ 'cataclysm', 'Olha o caos!', 'Presencie um cataclismo.', 1 ],
+    [ 'weatherSnow', 'Quer montar um boneco de neve?', 'Presencie uma nevasca.', 1 ],
+    [ 'weatherRain', 'Cantando na chuva', 'Presencie uma tempestade.', 1 ],
+    [ 'lightning', '1,21 gigawatts!', 'Seja atingido por um raio.', 1 ],
+    [ 'waterfall', 'Instinto gamer', 'O que esperava? Um tesouro?', 1 ],
+    [ 'fan', 'Primeira visita', 'Receba seu primeiro visitante.', 1 ],
+    [ 'reset', 'Arrume seu quarto', 'Coloque tudo de volta no lugar.', 1 ],
+    [ 'statueDown', 'Revolução!', 'Derrube a estátua.', 1 ],
+    [ 'konami', 'Cima, cima, baixo, baixo…', 'Você sabe o resto.', 1 ],
+    [ 'debug', 'Não é bug, é recurso', 'Acesse a interface de depuração.', 1 ],
+    [ 'hacker', 'Hacker', 'Esta conquista não pode ser obtida.', 1 ],
 ]

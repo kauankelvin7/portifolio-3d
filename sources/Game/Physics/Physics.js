@@ -221,7 +221,16 @@ export class Physics
                     physical.onCollision = _physicalDescription.onCollision
             }
 
-            const collider = this.world.createCollider(colliderDescription, physical.body)
+            let collider
+            try
+            {
+                collider = this.world.createCollider(colliderDescription, physical.body)
+            }
+            catch(error)
+            {
+                console.error('Rapier collider failed:', _colliderDescription.name, _colliderDescription.shape, _colliderDescription.parameters)
+                throw error
+            }
             physical.colliders.push(collider)
         }
 

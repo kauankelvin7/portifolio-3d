@@ -81,8 +81,8 @@ export class InteractivePoints
 
         // Uniforms
         this.playerPosition = uniform(vec2())
-        this.backColor = uniform(color('#251f2b'))
-        this.frontColor = uniform(color('#ffffff'))
+        this.backColor = uniform(color('#18231a'))
+        this.frontColor = uniform(color('#e8f0dc'))
 
         // Debug
         if(this.game.debug.active)

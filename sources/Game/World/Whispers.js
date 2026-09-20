@@ -13,7 +13,10 @@ export class Whispers
     {
         this.game = Game.getInstance()
 
-        this.count = parseInt(import.meta.env.VITE_WHISPERS_COUNT)
+        const configuredCount = Number(import.meta.env.VITE_WHISPERS_COUNT)
+        this.count = Number.isSafeInteger(configuredCount) && configuredCount > 0
+            ? configuredCount
+            : 30
 
         this.setSounds()
         this.setFlames()
@@ -340,7 +343,7 @@ export class Whispers
         this.menu.input.addEventListener('input', () =>
         {
             const sanatized = sanatize(this.menu.input.value, false, true, true)
-            this.menu.previewMessageText.textContent = sanatized.length ? sanatized : 'Your message here'
+            this.menu.previewMessageText.textContent = sanatized.length ? sanatized : 'Sua mensagem aqui'
 
             if(this.menu.input.textContent !== sanatized)
                 this.menu.input.value = sanatized
@@ -363,7 +366,7 @@ export class Whispers
         this.menu.previewMessageText.addEventListener('blur', () =>
         {
             const sanatized = sanatize(this.menu.input.value, true, true, true)
-            this.menu.previewMessageText.textContent = sanatized !== '' ? sanatized : 'Your message here'
+            this.menu.previewMessageText.textContent = sanatized !== '' ? sanatized : 'Sua mensagem aqui'
             updateGroup()
         })
 
@@ -382,7 +385,7 @@ export class Whispers
 
         this.menu.instance.events.on('closed', () =>
         {
-            this.menu.previewMessageText.textContent = 'Your message here'
+            this.menu.previewMessageText.textContent = 'Sua mensagem aqui'
             this.menu.input.value = ''
             updateGroup()
             this.menu.inputFlag.close()

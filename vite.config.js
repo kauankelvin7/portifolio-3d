@@ -14,7 +14,7 @@ export default {
     {
         // https: true,
         host: true, // Open to local network and display URL
-        open: true // Open in browser
+        open: false // Browser is opened explicitly during local verification
     },
     build:
     {

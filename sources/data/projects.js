@@ -1,162 +1,66 @@
 export default [
     {
-        title: 'Three.js Journey',
-        titleSmall: [ 'Three.js', 'Journey' ],
-        url: 'https://threejs-journey.com',
-        attributes:
-        {
-            role: [ 'developer', 'formater' ],
-            with: [ 'Hervé Studio', 'Bonhomme Paris' ]
-        },
-        distinctions: [ 'fwa' ], // 'awwwards', 'fwa', 'cssda'
-        images:
-        [
-            'threejs-journey-1.ktx',
-            'threejs-journey-2.ktx',
-            'threejs-journey-3.ktx',
-            'threejs-journey-4.ktx',
-            'threejs-journey-5.ktx',
-        ]
-    },
-    // {
-    //     title: 'Chartogne Taillet',
-    //     titleSmall: [ 'Chartogne', 'Taillet' ],
-    //     url: 'https://chartogne-taillet.com',
-    //     attributes:
-    //     {
-    //         at: 'Immersive Garden',
-    //         role: 'WebGL developer',
-    //         with: 'Rémi Tran'
-    //     },
-    //     distinctions: [ 'awwwards', 'cssda', 'fwa' ], // 'awwwards', 'fwa', 'cssda'
-    //     images:
-    //     [
-    //         'chartogne-taillet-1.ktx',
-    //         'chartogne-taillet-2.ktx',
-    //         'chartogne-taillet-3.ktx',
-    //     ]
-    // },
-    {
-        title: 'Bonhomme | 10 ans',
-        titleSmall: [ 'Bonhomme', '10 ans' ],
-        url: 'https://anniversary.bonhommeparis.com',
-        attributes:
-        {
-            role: 'WebGL developer',
-            with: 'Bonhomme Paris'
-        },
-        distinctions: [ 'awwwards', 'fwa' ],
-        images:
-        [
-            'bonhomme-10-ans-1.ktx',
-            'bonhomme-10-ans-2.ktx',
-            'bonhomme-10-ans-3.ktx',
-        ]
+        title: 'Leve',
+        titleSmall: [ 'Leve' ],
+        url: 'https://leve-agenda.vercel.app',
+        attributes: { role: 'Full-stack', at: 'React + TypeScript', with: 'Firebase + Express' },
+        distinctions: [],
+        images: [ 'kauan-leve-1.png' ]
     },
     {
-        title: 'Madbox',
-        titleSmall: [ 'Madbox' ],
-        url: 'https://madbox.io',
-        attributes:
-        {
-            role: 'WebGL developer',
-            at: 'Hervé Studio',
-            with: 'Lei Xing'
-        },
-        distinctions: [ 'awwwards' ],
-        images:
-        [
-            'madbox-1.ktx',
-            'madbox-2.ktx',
-            'madbox-3.ktx',
-        ]
+        title: 'Dental RPA',
+        titleSmall: [ 'Dental', 'RPA' ],
+        url: 'https://github.com/kauankelvin7/Automacao-Clinica-Odontologica',
+        attributes: { role: 'Automação RPA', at: 'Python', with: 'Selenium' },
+        distinctions: [],
+        images: [ 'kauan-dental-rpa-1.png' ]
     },
     {
-        title: 'Luni',
-        titleSmall: [ 'Luni' ],
-        url: 'https://www.luni.app',
-        attributes:
-        {
-            role: 'WebGL developer',
-            at: 'Hervé Studio',
-            with: 'Loïc Belaidremesal'
-        },
-        distinctions: [ 'awwwards', 'fwa' ],
-        images:
-        [
-            'luni-1.ktx',
-            'luni-2.ktx',
-            'luni-3.ktx',
-            'luni-4.ktx',
-        ]
+        title: 'Cinesia',
+        titleSmall: [ 'Cinesia' ],
+        url: 'https://github.com/kauankelvin7/Cinesia',
+        attributes: { role: 'Full-stack', at: 'React + Firebase', with: 'IA + PWA' },
+        distinctions: [],
+        images: [ 'kauan-cinesia-1.png' ]
     },
     {
-        title: 'Scout',
-        titleSmall: [ 'Scout' ],
-        url: 'https://scout-omega.vercel.app',
-        attributes:
-        {
-            role: 'WebGL developer',
-            at: 'Hervé Studio'
-        },
-        distinctions: [  ],
-        images:
-        [
-            'scout-1.ktx',
-            'scout-2.ktx',
-            'scout-3.ktx',
-        ]
+        title: 'Omni',
+        titleSmall: [ 'Omni' ],
+        url: 'https://github.com/kauankelvin7/Omni',
+        attributes: { role: 'Back-end', at: 'Java + Spring Boot', with: 'React + PostgreSQL' },
+        distinctions: [],
+        images: [ 'kauan-omni-1.png' ]
     },
     {
-        title: 'Prior Holdings',
-        titleSmall: [ 'Prio', 'Holdings' ],
-        url: 'https://prior.co.jp/discover/en',
-        attributes:
-        {
-            role: [ 'Front developer', 'WebGL developer' ],
-            at: 'Immersive Garden'
-        },
-        distinctions: [ 'awwwards', 'cssda', 'fwa' ],
-        images:
-        [
-            'prior-1.ktx',
-            'prior-2.ktx',
-            'prior-3.ktx',
-        ]
+        title: 'Portfólio 3D',
+        titleSmall: [ 'Portfólio', '3D' ],
+        url: 'https://kauankelvindev.vercel.app',
+        attributes: { role: 'Front-end', at: 'Next.js + React', with: 'Three Fiber' },
+        distinctions: [],
+        images: [ 'kauan-portfolio-1.png' ]
     },
     {
-        title: 'Orano',
-        titleSmall:  'Orano',
-        url: 'https://www.orano.group/experience/innovation/en',
-        attributes:
-        {
-            role: [ 'Front developer', 'WebGL developer' ],
-            at: 'Immersive Garden'
-        },
-        distinctions: [ 'awwwards', 'cssda', 'fwa' ],
-        images:
-        [
-            'orano-1.ktx',
-            'orano-2.ktx',
-            'orano-3.ktx',
-        ]
+        title: 'KKMovies',
+        titleSmall: [ 'KKMovies' ],
+        url: 'https://github.com/kauankelvin7/KKMovies',
+        attributes: { role: 'Full-stack', at: 'React + TypeScript', with: 'Express + TMDB' },
+        distinctions: [],
+        images: [ 'kauan-kkmovies-1.png' ]
     },
     {
-        title: 'Citrix / Redbull',
-        titleSmall: ['Citrix', 'Redbull'],
-        url: 'https://thenewmobileworkforce.imm-g-prod.com',
-        attributes:
-        {
-            role: [ 'WebGL developer' ],
-            at: 'Immersive Garden',
-            with: [ 'Damien Doussaud', 'Quentin Leclercq' ]
-        },
-        distinctions: [ 'awwwards', 'cssda', 'fwa' ],
-        images:
-        [
-            'citrix-redbull-1.ktx',
-            'citrix-redbull-2.ktx',
-            'citrix-redbull-3.ktx',
-        ]
+        title: 'Inkly',
+        titleSmall: [ 'Inkly' ],
+        url: 'https://github.com/kauankelvin7/Inkly-extension',
+        attributes: { role: 'Extensão web', at: 'JavaScript', with: 'Canvas API' },
+        distinctions: [],
+        images: [ 'kauan-inkly-1.png' ]
+    },
+    {
+        title: 'SOCPlug Fix',
+        titleSmall: [ 'SOCPlug', 'Fix' ],
+        url: 'https://github.com/kauankelvin7/socplug-fix',
+        attributes: { role: 'Automação no Windows', at: 'Batch', with: 'Java Web Start' },
+        distinctions: [],
+        images: [ 'kauan-socplug-1.png' ]
     }
 ]

@@ -21,7 +21,7 @@
         position relative
         width 100%
         padding 12px 20px 15px 15px
-        background radial-gradient(ellipse at top left, #251f2b, #1d1721)
+        background radial-gradient(ellipse at top left, var(--forest-900), var(--forest-950))
         font-size 16px
         cursor pointer
         -webkit-user-select none
@@ -49,7 +49,7 @@
             left 0
             width 100%
             height 2px
-            background #ffceca
+            background var(--sage-300)
             transform-origin 100% 0
             will-change transform
 
@@ -64,7 +64,7 @@
 
                 .title
                     text-align left
-                    color #d5ff95
+                    color var(--leaf-300)
                     font-size 1.7rem
                     margin-right 10px
                     margin-bottom 0
@@ -75,7 +75,7 @@
                     display flex
                     align-items center
                     font-weight 700
-                    color #d5ff95
+                    color var(--leaf-300)
 
                     .check-icon
                         display block
@@ -108,7 +108,7 @@
                     transition opacity 0.1s
 
             .time-bar
-                background #d5ff95
+                background var(--leaf-300)
 
 
         &.is-song
@@ -140,22 +140,22 @@
             .top
                 .title
                     text-align left
-                    color #d5ff95
+                    color var(--leaf-300)
                     font-size 1.7rem
                     margin-bottom 0
                     line-height 1em
 
             .time-bar
-                background #d5ff95
+                background var(--leaf-300)
 
         &.is-server-disconnected
             .top
                 .title
                     text-align left
-                    color #ff6a7c
+                    color var(--danger)
                     font-size 1.7rem
                     margin-bottom 0
                     line-height 1em
 
             .time-bar
-                background #ff6a7c
+                background var(--danger)

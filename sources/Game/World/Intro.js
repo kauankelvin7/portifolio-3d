@@ -123,8 +123,76 @@ export class Intro
 
         // Texture
         this.text.textures = new Map()
+        const material = new THREE.MeshBasicNodeMaterial({ transparent: true })
+        const mesh = new THREE.Mesh(geometry, material)
+        mesh.visible = false
+        this.label.add(mesh)
+
+        const createTexture = (name) =>
+        {
+            const canvas = document.createElement('canvas')
+            canvas.width = 512
+            canvas.height = 256
+
+            const context = canvas.getContext('2d')
+            context.clearRect(0, 0, canvas.width, canvas.height)
+            context.fillStyle = '#ffffff'
+            context.strokeStyle = '#ffffff'
+            context.lineCap = 'round'
+            context.lineJoin = 'round'
+
+            // Curved arrow used by every input mode.
+            context.lineWidth = 6
+            context.beginPath()
+            context.moveTo(28, 238)
+            context.bezierCurveTo(62, 184, 112, 148, 174, 160)
+            context.stroke()
+            context.beginPath()
+            context.moveTo(30, 188)
+            context.quadraticCurveTo(34, 220, 28, 238)
+            context.quadraticCurveTo(58, 226, 92, 226)
+            context.stroke()
+
+            context.font = '700 70px "Amatic SC"'
+            context.textAlign = 'center'
+            context.textBaseline = 'middle'
+
+            const centerX = 342
+            const firstLineY = 76
+            const secondLineY = 158
+
+            if(name === 'gamepadXbox' || name === 'gamepadPlaystation')
+            {
+                context.fillText('APERTE', centerX - 32, firstLineY)
+
+                const iconX = 449
+                context.lineWidth = 6
+                context.beginPath()
+                context.arc(iconX, firstLineY, 36, 0, Math.PI * 2)
+                context.stroke()
+                context.font = '700 56px "Amatic SC"'
+                context.fillText(name === 'gamepadXbox' ? 'A' : 'X', iconX, firstLineY + 1)
+
+                context.font = '700 56px "Amatic SC"'
+                context.fillText('PARA COMEÇAR', centerX, secondLineY)
+            }
+            else
+            {
+                context.fillText(name === 'touch' ? 'TOQUE PARA' : 'CLIQUE PARA', centerX, firstLineY)
+                context.fillText('COMEÇAR', centerX, secondLineY)
+            }
+
+            const labelTexture = new THREE.CanvasTexture(canvas)
+            labelTexture.minFilter = THREE.LinearFilter
+            labelTexture.magFilter = THREE.LinearFilter
+            labelTexture.generateMipmaps = false
+            return labelTexture
+        }
+
         this.text.updateTexture = async () =>
         {
+            await document.fonts.load('700 70px "Amatic SC"')
+
             // Define name
             let name = 'mouseKeyboard'
             
@@ -144,57 +212,30 @@ export class Intro
                 name = 'touch'
             }
 
-            // Load, set and save texture
+            // Create, set and save texture
             let cachedTexture = this.text.textures.get(name)
             if(!cachedTexture)
             {
-                const loader = this.game.resourcesLoader.getLoader('textureKtx')
-                
-                const resourcePath = `intro/${name}Label.ktx`
-                loader.load(
-                    resourcePath,
-                    (loadedTexture) =>
-                    {
-                        this.text.textures.set(name, loadedTexture)
-
-                        // Update material and mesh
-                        material.outputNode = Fn(() =>
-                        {
-                            texture(loadedTexture, vec2(uv().x, uv().y.oneMinus())).r.lessThan(0.5).discard()
-                            return vec4(1)
-                        })()
-                        material.needsUpdate = true
-                        mesh.visible = true
-                    }
-                )
+                cachedTexture = createTexture(name)
+                this.text.textures.set(name, cachedTexture)
             }
-            else
+
+            material.outputNode = Fn(() =>
             {
-                // Update material and mesh
-                material.outputNode = Fn(() =>
-                {
-                    texture(cachedTexture, vec2(uv().x, uv().y.oneMinus())).r.lessThan(0.5).discard()
-                    return vec4(1)
-                })()
-                material.needsUpdate = true
-            }
-
+                // CanvasTexture already uses the renderer's standard Y orientation.
+                // Inverting V here flips the two instruction lines vertically
+                // ("COMEÇAR" appears above "CLIQUE PARA").
+                texture(cachedTexture, uv()).r.lessThan(0.5).discard()
+                return vec4(1)
+            })()
+            material.needsUpdate = true
+            mesh.visible = true
         }
 
         this.text.updateTexture()
 
-        // Material
-        const material = new THREE.MeshBasicNodeMaterial({
-            transparent: true
-        })
-
         this.game.inputs.gamepad.events.on('typeChange', this.text.updateTexture)
         this.game.inputs.events.on('modeChange', this.text.updateTexture)
-
-        const mesh = new THREE.Mesh(geometry, material)
-        mesh.visible = false
-
-        this.label.add(mesh)
 
         this.text.mesh = mesh
     }

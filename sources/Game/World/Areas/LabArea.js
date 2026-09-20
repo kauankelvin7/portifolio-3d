@@ -90,7 +90,7 @@ export class LabArea extends Area
     {
         this.interactivePoint = this.game.interactivePoints.create(
             this.references.items.get('interactivePoint')[0].position,
-            'Lab',
+            'Laboratório',
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>
@@ -465,18 +465,18 @@ export class LabArea extends Area
                 resource = {}
                 resource.loaded = false
 
-                const loader = this.game.resourcesLoader.getLoader('textureKtx')
+                const loader = this.game.resourcesLoader.getLoader(key.endsWith('.ktx') ? 'textureKtx' : 'texture')
 
                 loader.load(
                     path,
                     (loadedTexture) =>
                     {
                         resource.texture = loadedTexture
-                        resource.colorSpace = THREE.SRGBColorSpace
-                        resource.flipY = false
-                        resource.magFilter = THREE.LinearFilter
-                        resource.minFilter = THREE.LinearFilter
-                        resource.generateMipmaps = false
+                    loadedTexture.colorSpace = THREE.SRGBColorSpace
+                    loadedTexture.flipY = false
+                    loadedTexture.magFilter = THREE.LinearFilter
+                    loadedTexture.minFilter = THREE.LinearFilter
+                    loadedTexture.generateMipmaps = false
 
                         resource.loaded = true
                         
@@ -838,7 +838,7 @@ export class LabArea extends Area
                         if(mini.startedLoading)
                             return
 
-                        const loader = this.game.resourcesLoader.getLoader('textureKtx')
+                        const loader = this.game.resourcesLoader.getLoader(project.imageMini.endsWith('.ktx') ? 'textureKtx' : 'texture')
 
                         loader.load(
                             `lab/images/${project.imageMini}`,

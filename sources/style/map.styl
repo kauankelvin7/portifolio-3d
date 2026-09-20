@@ -36,7 +36,7 @@
         left 0
         width calc(100% + var(--hover-translate))
         height 100%
-        background radial-gradient(ellipse at top right, #C21515, #46123B)
+        background radial-gradient(ellipse at top right, var(--moss-600), var(--forest-700))
         transition transform 0.15s 0.15s
 
         html.input-filter-menu &,
@@ -81,7 +81,7 @@
     max-width 100vmin
     max-height 100vmin
     aspect-ratio 1 / 1
-    background radial-gradient(ellipse at top left, #251f2b, #1d1721)
+    background radial-gradient(ellipse at top left, var(--forest-900), var(--forest-950))
     -webkit-user-select none
     -moz-user-select none
     user-select none
@@ -134,7 +134,7 @@
             right 0
             width 100%
             height calc(100% + var(--hover-translate))
-            background radial-gradient(ellipse at top right, #C21515, #46123B)
+            background radial-gradient(ellipse at top right, var(--moss-600), var(--forest-700))
             transition transform 0.15s
 
             &::after
@@ -290,9 +290,9 @@
             width var(--size)
             height var(--size)
             background #ffffff
-            border 4px solid #251f2b
+            border 4px solid var(--forest-900)
             transform rotate(45deg)
-            box-shadow 0 0 4px #251f2b77
+            box-shadow 0 0 4px rgba(17, 27, 20, 0.47)
 
             @media only screen and (max-width 520px)
                 --size 12px

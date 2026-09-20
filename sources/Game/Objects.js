@@ -161,13 +161,24 @@ export class Objects
             for(const _child of children)
             {
                 const collider = {
+                    name: _child.name,
                     position: _child.position,
                     quaternion: _child.quaternion,
                 }
                 if(_child.name.match(/^trimesh/i))
                 {
                     collider.shape = 'trimesh'
-                    collider.parameters = [ _child.geometry.attributes.position.array, _child.geometry.index.array ]
+                    const positionAttribute = _child.geometry.attributes.position
+                    const rapierVertices = new Float32Array(positionAttribute.count * 3)
+                    for(let i = 0; i < positionAttribute.count; i++)
+                    {
+                        rapierVertices[i * 3 + 0] = positionAttribute.getX(i)
+                        rapierVertices[i * 3 + 1] = positionAttribute.getY(i)
+                        rapierVertices[i * 3 + 2] = positionAttribute.getZ(i)
+                    }
+                    const indexArray = _child.geometry.index.array
+                    const rapierIndices = indexArray instanceof Uint32Array ? indexArray : new Uint32Array(indexArray)
+                    collider.parameters = [ rapierVertices, rapierIndices ]
                 }
                 else if(_child.name.match(/^hull/i))
                 {

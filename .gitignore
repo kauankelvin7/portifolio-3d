@@ -3,7 +3,11 @@ node_modules
 dist
 .vercel
 .VSCodeCounter
-.env*
+.env
+.env.*
+!.env.example
 .autosave
+*.blend1
+resources/original-public-assets/
 .wav
 !static/sounds/music/*.wav

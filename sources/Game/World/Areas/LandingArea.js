@@ -5,6 +5,9 @@ import { InteractivePoints } from '../../InteractivePoints.js'
 import { Area } from './Area.js'
 import gsap from 'gsap'
 import { MeshDefaultMaterial } from '../../Materials/MeshDefaultMaterial.js'
+import { FontLoader } from 'three/addons/loaders/FontLoader.js'
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js'
+import helvetikerFont from 'three/examples/fonts/helvetiker_bold.typeface.json'
 
 export class LandingArea extends Area
 {
@@ -23,17 +26,102 @@ export class LandingArea extends Area
 
     setLetters()
     {
-        const references = this.references.items.get('letters')
+        const references = this.references.items.get('letters').sort((a, b) => a.position.x - b.position.x)
 
+        const font = new FontLoader().parse(helvetikerFont)
+        const groups = [ 'KA', 'U', 'A', 'N', 'K', 'E', 'L', 'V', 'I', 'N' ]
+        const letterMaterials = [ '#899c63', '#64784c', '#a3b278' ].map((value) => new MeshDefaultMaterial({
+            colorNode: color(value),
+        }))
+        const invisibleMaterial = new THREE.MeshBasicNodeMaterial({ visible: false })
+        const direction = new THREE.Vector3()
+            .subVectors(references.at(-1).position, references[0].position)
+            .setY(0)
+            .normalize()
+        const center = new THREE.Vector3()
         for(const reference of references)
+            center.add(reference.position)
+        center.divideScalar(references.length)
+
+        const letterGap = 0.11
+        const wordGap = 0.45
+        const geometries = groups.map((text) =>
         {
+            const geometry = new TextGeometry(text, {
+                font,
+                size: 1.39,
+                depth: 0.46,
+                curveSegments: 8,
+                bevelEnabled: false,
+            })
+            geometry.setDrawRange(0, geometry.attributes.position.count)
+            geometry.computeBoundingBox()
+
+            const bounds = geometry.boundingBox
+            const width = bounds.max.x - bounds.min.x
+            geometry.translate(
+                - (bounds.min.x + bounds.max.x) * 0.5,
+                - (bounds.min.y + bounds.max.y) * 0.5,
+                - (bounds.min.z + bounds.max.z) * 0.5,
+            )
+            geometry.computeVertexNormals()
+
+            const height = bounds.max.y - bounds.min.y
+            const depth = bounds.max.z - bounds.min.z
+
+            return { geometry, width, height, depth }
+        })
+
+        const totalWidth = geometries.reduce((sum, item) => sum + item.width, 0)
+            + letterGap * (geometries.length - 1)
+            + wordGap
+        let cursor = - totalWidth * 0.5
+
+        for(let index = 0; index < references.length; index++)
+        {
+            const reference = references[index]
+            const { geometry, width, height, depth } = geometries[index]
+            cursor += width * 0.5
+
+            // Keep the original mesh and its physics untouched. Replacing a
+            // geometry already known by the WebGPU renderer can leave an
+            // indexed draw command cached for a non-indexed TextGeometry.
+            // The original mesh becomes an invisible physical carrier and the
+            // personalized lettering follows it as a child mesh.
+            reference.material = invisibleMaterial
+            const letter = new THREE.Mesh(geometry, letterMaterials[index % letterMaterials.length])
+            letter.name = `kauanKelvinLetter${index}`
+            letter.castShadow = true
+            letter.receiveShadow = true
+            reference.add(letter)
+
+            const position = center.clone().addScaledVector(direction, cursor)
+            reference.position.copy(position)
+
             const physical = reference.userData.object.physical
+            physical.body.setTranslation(position, false)
+            physical.initialState.position = {
+                x: position.x,
+                y: position.y,
+                z: position.z,
+            }
+            physical.colliders[0].setHalfExtents({
+                x: width * 0.5,
+                y: height * 0.5,
+                z: depth * 0.5,
+            })
+            physical.colliders[0].setTranslationWrtParent({ x: 0, y: 0, z: 0 })
+            physical.body.recomputeMassPropertiesFromColliders()
             physical.colliders[0].setActiveEvents(this.game.RAPIER.ActiveEvents.CONTACT_FORCE_EVENTS)
             physical.colliders[0].setContactForceEventThreshold(5)
             physical.onCollision = (force, position) =>
             {
                 this.game.audio.groups.get('hitBrick').playRandomNext(force, position)
             }
+
+            cursor += width * 0.5 + letterGap
+            if(index === 3)
+                cursor += wordGap
         }
     }
 
@@ -42,7 +130,7 @@ export class LandingArea extends Area
         // Interactive point
         const interactivePoint = this.game.interactivePoints.create(
             this.references.items.get('kioskInteractivePoint')[0].position,
-            'Map',
+            'Mapa',
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>
@@ -76,7 +164,7 @@ export class LandingArea extends Area
         // Interactive point
         const interactivePoint = this.game.interactivePoints.create(
             this.references.items.get('controlsInteractivePoint')[0].position,
-            'Controls',
+            'Controles',
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>
@@ -217,7 +305,7 @@ export class LandingArea extends Area
         // Interactive point
         this.game.interactivePoints.create(
             this.references.items.get('bonfireInteractivePoint')[0].position,
-            'Res(e)t',
+            'Reiniciar',
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>

@@ -86,7 +86,7 @@ export class Lighting
         this.lightBounceMultiplier = uniform(float(1))
 
         this.shadowColor = uniform(this.game.dayCycles.properties.shadowColor.value)
-        this.bounceColor = uniform(color('#82487f'))
+        this.bounceColor = uniform(color('#526d4b'))
         this.coreShadowEdgeLow = uniform(float(-0.25))
         this.coreShadowEdgeHigh = uniform(float(1))
 

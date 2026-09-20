@@ -24,8 +24,9 @@ export class SocialArea extends Area
         }
 
         this.setLinks()
+        this.setCustomIcons()
         this.setFans()
-        this.setOnlyFans()
+        this.setVisitors()
         this.setStatue()
         // this.setFWA()
         this.setAchievement()
@@ -34,11 +35,9 @@ export class SocialArea extends Area
     setLinks()
     {
         const radius = 6
-        let i = 0
-
         for(const link of socialData)
         {
-            const angle = i * Math.PI / (socialData.length - 1)
+            const angle = link.slot * Math.PI / 7
             const position = this.center.clone()
             position.x += Math.cos(angle) * radius
             position.y = 1
@@ -52,8 +51,8 @@ export class SocialArea extends Area
                 () =>
                 {
                     if(link.url)
-                        window.open(link.url, '_blank')
-                    else(link.modal)
+                        window.open(link.url, '_blank', 'noopener,noreferrer')
+                    else if(link.modal)
                         this.game.modals.open(link.modal)
                 },
                 () =>
@@ -70,7 +69,127 @@ export class SocialArea extends Area
                 }
             )
             
-            i++
+        }
+    }
+
+    setCustomIcons()
+    {
+        const invisibleMaterial = new THREE.MeshBasicNodeMaterial({ visible: false })
+        const statueMaterial = this.game.materials.getFromName('palette')
+
+        // Objects.getFromModel changes .name for physics. GLTFLoader preserves
+        // the original model identifier in userData.name.
+        const findCarrierItem = (name) => this.objects.items
+            .find((item) => item.visual?.object3D.userData.name === name)
+
+        const findCarrier = (name) => findCarrierItem(name)?.visual.object3D
+
+        const hideCarrier = (name) =>
+        {
+            const item = findCarrierItem(name)
+            if(!item)
+                return
+
+            item.visual.object3D.visible = false
+            item.physical?.body.setEnabled(false)
+            this.objects.hideable = this.objects.hideable.filter((object3D) => object3D !== item.visual.object3D)
+        }
+
+        hideCarrier('blueskyPhysicalDynamic.001')
+        hideCarrier('youtubePhysicalDynamic')
+        hideCarrier('twitchPhysicalDynamic')
+
+        const applyStatuePalette = (geometry) =>
+        {
+            const uv = geometry.attributes.uv
+            for(let i = 0; i < uv.count; i++)
+                uv.setXY(i, 0.421, 0.5)
+            uv.needsUpdate = true
+            return geometry
+        }
+
+        const createBar = (width, height, depth, x, y, rotation = 0) =>
+        {
+            const geometry = applyStatuePalette(new THREE.BoxGeometry(width, height, depth))
+            const mesh = new THREE.Mesh(geometry, statueMaterial)
+            mesh.position.set(x, y, 0)
+            mesh.rotation.z = rotation
+            mesh.castShadow = true
+            mesh.receiveShadow = true
+            return mesh
+        }
+
+        const instagramCarrier = findCarrier('xPhysicalDynamic')
+        if(instagramCarrier)
+        {
+            instagramCarrier.material = invisibleMaterial
+
+            const icon = new THREE.Group()
+            icon.name = 'instagramIcon'
+            icon.add(
+                createBar(1.24, 0.16, 0.22, 0, 0.62),
+                createBar(1.24, 0.16, 0.22, 0, -0.62),
+                createBar(0.16, 1.08, 0.22, -0.54, 0),
+                createBar(0.16, 1.08, 0.22, 0.54, 0),
+            )
+
+            const lensGeometry = applyStatuePalette(new THREE.TorusGeometry(0.28, 0.08, 8, 24))
+            const lens = new THREE.Mesh(lensGeometry, statueMaterial)
+            lens.position.z = 0.14
+            lens.castShadow = true
+            lens.receiveShadow = true
+            icon.add(lens)
+
+            const indicatorGeometry = applyStatuePalette(new THREE.SphereGeometry(0.08, 12, 8))
+            const indicator = new THREE.Mesh(indicatorGeometry, statueMaterial)
+            indicator.position.set(0.32, 0.34, 0.14)
+            indicator.castShadow = true
+            indicator.receiveShadow = true
+            icon.add(indicator)
+
+            instagramCarrier.add(icon)
+        }
+
+        const portfolioCarrier = findCarrier('discordPhysicalDynamic')
+        if(portfolioCarrier)
+        {
+            portfolioCarrier.material = invisibleMaterial
+
+            const icon = new THREE.Group()
+            icon.name = 'portfolioIcon'
+            icon.add(
+                createBar(0.55, 0.14, 0.22, -0.28, 0.18, Math.PI * 0.25),
+                createBar(0.55, 0.14, 0.22, -0.28, -0.18, - Math.PI * 0.25),
+                createBar(0.55, 0.14, 0.22, 0.28, 0.18, - Math.PI * 0.25),
+                createBar(0.55, 0.14, 0.22, 0.28, -0.18, Math.PI * 0.25),
+                createBar(0.9, 0.12, 0.22, 0, 0, - Math.PI * 0.35),
+            )
+            portfolioCarrier.add(icon)
+        }
+
+        const visitorsCarrier = findCarrier('onlyfansPhysicalDynamic')
+        if(visitorsCarrier)
+        {
+            visitorsCarrier.material = invisibleMaterial
+
+            const icon = new THREE.Group()
+            icon.name = 'visitorsIcon'
+
+            const bodyGeometry = applyStatuePalette(new THREE.CapsuleGeometry(0.3, 0.5, 4, 16))
+            const body = new THREE.Mesh(bodyGeometry, statueMaterial)
+            body.position.set(0, -0.22, 0)
+            body.castShadow = true
+            body.receiveShadow = true
+            icon.add(body)
+
+            const headGeometry = applyStatuePalette(new THREE.SphereGeometry(0.25, 16, 12))
+            const head = new THREE.Mesh(headGeometry, statueMaterial)
+            head.position.set(0, 0.62, 0)
+            head.castShadow = true
+            head.receiveShadow = true
+            icon.add(head)
+
+            visitorsCarrier.add(icon)
         }
     }
 
@@ -169,11 +288,11 @@ export class SocialArea extends Area
         }
     }
 
-    setOnlyFans()
+    setVisitors()
     {
         const interactiveArea = this.game.interactivePoints.create(
             this.references.items.get('onlyFans')[0].position,
-            'OnlyFans',
+            'Visitantes',
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>

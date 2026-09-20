@@ -521,17 +521,17 @@ export class Achievements
 
             if(clickCount === 1)
             {
-                button.textContent = 'Are you sure?'
+                button.textContent = 'Tem certeza?'
             }
 
             else if(clickCount === 2)
             {
-                button.textContent = 'Definitely?'
+                button.textContent = 'Certeza mesmo?'
             }
 
             else if(clickCount === 3)
             {
-                button.textContent = 'Done!'
+                button.textContent = 'Pronto!'
                 clickCount = 0
                 this.reset()
             }
@@ -542,7 +542,7 @@ export class Achievements
             event.preventDefault()
             clickCount = 0
 
-            button.textContent = 'Reset achievements'
+            button.textContent = 'Reiniciar conquistas'
         })
     }
 

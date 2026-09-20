@@ -25,7 +25,7 @@ export class Materials
         this.createPalette()
 
         this.createEmissiveGradient('emissiveOrangeRadialGradient', '#ff8641', '#ff3e00', 1.7, true, this.debugPanel?.addFolder({ title: 'emissiveOrangeRadialGradient' }))
-        this.createEmissiveGradient('emissivePurpleRadialGradient', '#454bbc', '#ff2eb4', 1.7, true, this.debugPanel?.addFolder({ title: 'emissivePurpleRadialGradient' }))
+        this.createEmissiveGradient('emissivePurpleRadialGradient', '#839b61', '#45643c', 1.7, true, this.debugPanel?.addFolder({ title: 'emissivePurpleRadialGradient' }))
         this.createEmissiveGradient('emissiveBlueRadialGradient', '#91f0ff', '#128fff', 1.7, true, this.debugPanel?.addFolder({ title: 'emissiveBlueRadialGradient' }))
         this.createEmissiveGradient('emissiveGreenRadialGradient', '#f8ffa6', '#74ff00', 1.5, true, this.debugPanel?.addFolder({ title: 'emissiveGreenRadialGradient' }))
         this.createEmissiveGradient('emissiveWhiteRadialGradient', '#ffffff', '#666666', 2.7, false, this.debugPanel?.addFolder({ title: 'emissiveWhiteRadialGradient' }))
@@ -35,8 +35,10 @@ export class Materials
 
     createPalette()
     {
+        const paletteColor = texture(this.game.resources.paletteTexture).rgb
+        const mossColor = color('#718456').mul(luminance(paletteColor).mul(1.15).add(0.2))
         const material = new MeshDefaultMaterial({
-            colorNode: texture(this.game.resources.paletteTexture).rgb
+            colorNode: mix(paletteColor, mossColor, 0.2)
         })
         
         this.save('palette', material)
@@ -57,9 +59,9 @@ export class Materials
         const context = canvas.getContext('2d')
 
         const colors = [
-            { stop: 0, value: '#ffb646' },
-            { stop: 0.5, value: '#ff347e' },
-            { stop: 1, value: '#01005f' },
+            { stop: 0, value: '#d5dda7' },
+            { stop: 0.5, value: '#718c4d' },
+            { stop: 1, value: '#183222' },
         ]
 
         const update = () =>

@@ -582,7 +582,7 @@ export class CircuitArea extends Area
     {
         this.interactivePoint = this.game.interactivePoints.create(
             this.references.items.get('interactivePoint')[0].position,
-            'Start race!',
+            'Iniciar corrida!',
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>
@@ -867,7 +867,7 @@ export class CircuitArea extends Area
                     context.fillStyle = '#ff87a2'
                     context.textBaseline = 'middle'
                     context.textAlign = 'center'
-                    context.fillText('OFFLINE', resolution * 0.5, resolution * 0.5)
+                    context.fillText('SEM CONEXÃO', resolution * 0.5, resolution * 0.5)
                 }
                 else if(scores.length === 0)
                 {
@@ -875,7 +875,7 @@ export class CircuitArea extends Area
                     context.fillStyle = '#ffffff'
                     context.textBaseline = 'middle'
                     context.textAlign = 'center'
-                    context.fillText('NO SCORE YET TODAY', resolution * 0.5, resolution * 0.5)
+                    context.fillText('SEM PONTUAÇÃO HOJE', resolution * 0.5, resolution * 0.5)
                 }
                 else
                 {
@@ -1061,7 +1061,7 @@ export class CircuitArea extends Area
             {
                 this.resetTime.lastTimeDrawn = formatedTime
 
-                this.resetTime.finalFormatedTime = formatedTime === '' ? 'now' : `in ${formatedTime}`
+                this.resetTime.finalFormatedTime = formatedTime === '' ? 'agora' : `em ${formatedTime}`
                 this.resetTime.draw(this.resetTime.finalFormatedTime)
 
                 if(this.menu.instance.isOpen)

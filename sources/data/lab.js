@@ -1,80 +1,80 @@
 export default [
     {
-        title: 'Black Hole',
-        url: 'https://awwwards-2022-workshop.vercel.app',
-        image: 'black-hole.ktx',
-        imageMini: 'black-hole-mini.ktx'
+        title: 'Leve',
+        url: 'https://github.com/kauankelvin7/Leve',
+        image: 'kauan-leve.png',
+        imageMini: 'kauan-leve-mini.png'
     },
     {
-        title: 'Infinite World',
-        url: 'https://infinite-world.vercel.app',
-        image: 'infinite-world.ktx',
-        imageMini: 'infinite-world-mini.ktx'
+        title: 'Dental RPA',
+        url: 'https://github.com/kauankelvin7/Automacao-Clinica-Odontologica',
+        image: 'kauan-dental-rpa.png',
+        imageMini: 'kauan-dental-rpa-mini.png'
     },
     {
-        title: 'My Room in 3D',
-        url: 'https://my-room-in-3d.vercel.app',
-        image: 'my-room-in-3d.ktx',
-        imageMini: 'my-room-in-3d-mini.ktx',
+        title: 'Cinesia',
+        url: 'https://github.com/kauankelvin7/Cinesia',
+        image: 'kauan-cinesia.png',
+        imageMini: 'kauan-cinesia-mini.png'
     },
     {
-        title: 'Particles System',
-        url: 'https://three-js-tsl-particles-system.vercel.app',
-        image: 'particles-system.ktx',
-        imageMini: 'particles-system-mini.ktx'
+        title: 'Omni',
+        url: 'https://github.com/kauankelvin7/Omni',
+        image: 'kauan-omni.png',
+        imageMini: 'kauan-omni-mini.png'
     },
     {
-        title: 'Stylized Low Poly',
-        url: 'https://stylized-low-poly.vercel.app',
-        image: 'stylized-low-poly.ktx',
-        imageMini: 'stylized-low-poly-mini.ktx'
+        title: 'Portfólio 3D',
+        url: 'https://github.com/kauankelvin7/portifolio-dev',
+        image: 'kauan-portfolio.png',
+        imageMini: 'kauan-portfolio-mini.png'
     },
     {
-        title: 'Holographic terrain',
-        url: 'https://experiment-holographic-terrain.vercel.app',
-        image: 'holographic-terrain.ktx',
-        imageMini: 'holographic-terrain-mini.ktx'
+        title: 'KKMovies',
+        url: 'https://github.com/kauankelvin7/KKMovies',
+        image: 'kauan-kkmovies.png',
+        imageMini: 'kauan-kkmovies-mini.png'
     },
     {
-        title: 'Woodkid Volcano Robot',
-        url: 'https://experiment-woodkid-volcano-robot.vercel.app',
-        image: 'woodkid-volcano-robot.ktx',
-        imageMini: 'woodkid-volcano-robot-mini.ktx'
+        title: 'Inkly',
+        url: 'https://github.com/kauankelvin7/Inkly-extension',
+        image: 'kauan-inkly.png',
+        imageMini: 'kauan-inkly-mini.png'
     },
     {
-        title: 'Bounce Friday',
-        url: 'https://threejs-journey.com/apps/bounce-friday/',
-        image: 'bounce-friday.ktx',
-        imageMini: 'bounce-friday-mini.ktx'
+        title: 'SOCPlug Fix',
+        url: 'https://github.com/kauankelvin7/socplug-fix',
+        image: 'kauan-socplug.png',
+        imageMini: 'kauan-socplug-mini.png'
     },
     {
-        title: 'VFX flames',
-        url: 'https://threejs.org/examples/webgpu_tsl_vfx_flames.html',
-        image: 'vfx-flames.ktx',
-        imageMini: 'vfx-flames-mini.ktx'
+        title: 'Syntax',
+        url: 'https://github.com/kauankelvin7/Syntax',
+        image: 'kauan-syntax.png',
+        imageMini: 'kauan-syntax-mini.png'
     },
     {
-        title: 'VFX tornado',
-        url: 'https://threejs.org/examples/webgpu_tsl_vfx_tornado.html',
-        image: 'vfx-tornado.ktx',
-        imageMini: 'vfx-tornado-mini.ktx'
+        title: 'Agenda Ocupacional',
+        url: 'https://github.com/kauankelvin7/sistema-agenda-ocupacional',
+        image: 'kauan-agenda-ocupacional.png',
+        imageMini: 'kauan-agenda-ocupacional-mini.png'
     },
     {
-        title: 'DOOM Portal',
-        url: 'https://doom-portal-in-webgl.vercel.app',
-        image: 'doom-portal.ktx',
-        imageMini: 'doom-portal-mini.ktx'
+        title: 'Jogo de Xadrez',
+        url: 'https://github.com/kauankelvin7/Jogo-de-Xadrez',
+        image: 'kauan-xadrez.png',
+        imageMini: 'kauan-xadrez-mini.png'
     },
     {
-        title: 'Organic Sphere',
-        url: 'https://organic-sphere.vercel.app',
-        image: 'organic-sphere.ktx',
-        imageMini: 'organic-sphere-mini.ktx'
+        title: 'Busca em PDF',
+        url: 'https://github.com/kauankelvin7/SearchInPDF',
+        image: 'kauan-search-in-pdf.png',
+        imageMini: 'kauan-search-in-pdf-mini.png'
     },
     {
-        title: 'Attractors',
-        url: 'https://threejs.org/examples/webgpu_tsl_compute_attractors_particles.html',
-        image: 'attractors.ktx',
-        imageMini: 'attractors-mini.ktx'
+        title: 'Globe Dev',
+        url: 'https://github.com/kauankelvin7/globe-dev',
+        image: 'kauan-globe-dev.png',
+        imageMini: 'kauan-globe-dev-mini.png'
     }
 ]
